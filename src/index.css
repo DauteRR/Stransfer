@@ -49,7 +49,7 @@ canvas {
   flex-direction: column;
 }
 
-.button,
+/* .button,
 .download-image-link {
   outline: none;
   font: inherit;
@@ -62,7 +62,7 @@ canvas {
 .download-image-link:hover,
 .download-image-link:focus {
   box-shadow: 0 5px 10px -3px #000;
-}
+} */
 
 .result-list {
   display: flex;
@@ -70,30 +70,3 @@ canvas {
   align-items: center;
   flex-wrap: wrap;
 }
-
-.result-options {
-  display: inline;
-}
-
-.result-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-.result-options > .download-image-link,
-.button {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  text-align: center;
-}
-
-/*
-.video {
-  background-color: #ccc;
-  padding: 0.5rem;
-  border: 1px solid #000;
-  border-radius: 5px;
-}
-*/

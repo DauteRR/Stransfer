@@ -1,0 +1,60 @@
+.DownloadableImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.DownloadableImage__image {
+  margin: 0 1rem 1rem 1rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.DownloadableImage__options {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.DownloadableImage__options > a {
+  outline: none;
+}
+
+.options__delete-button,
+.options__download-icon {
+  outline: none;
+  font: inherit;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0 0.1rem;
+  background-color: #fff;
+  transition: all 0.3s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
+
+.options__delete-button:hover,
+.options__delete-button:focus {
+  background-color: red;
+  color: white;
+}
+
+.options__download-icon:hover,
+.DownloadableImage__options > a:focus .options__download-icon {
+  background-color: cornflowerblue;
+  color: white;
+}
