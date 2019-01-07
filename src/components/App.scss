@@ -1,28 +1,50 @@
 .App__camera-container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  margin: 1rem;
+  border-radius: 5px;
 }
 
 .camera-container__button {
-  opacity: 0.5;
-  outline: none;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
+  opacity: 0.8;
   border-radius: 50%;
-  margin-bottom: 12px;
+  margin: 12px; // Shadow spread on hover (the maximum value) + 2px
+  width: 3rem;
+  height: 3rem;
 
   $shadow-spread: 2px;
-  box-shadow: (-$shadow-spread) 0 white, 0 $shadow-spread white,
-    $shadow-spread 0 white, 0 (-$shadow-spread) white;
+  $shadow-color: white;
+  box-shadow: (-$shadow-spread) 0 $shadow-color, 0 $shadow-spread $shadow-color,
+    $shadow-spread 0 $shadow-color, 0 (-$shadow-spread) $shadow-color;
 
   transition: all 0.3s ease-in-out;
 
-  &:hover,
-  &:focus {
+  &:hover {
     $shadow-spread: 10px;
-    box-shadow: (-$shadow-spread) 0 white, 0 $shadow-spread white,
-      $shadow-spread 0 white, 0 (-$shadow-spread) white;
-    transform: translate(-50%) rotate(180deg);
+    box-shadow: (-$shadow-spread) 0 $shadow-color,
+      0 $shadow-spread $shadow-color, $shadow-spread 0 $shadow-color,
+      0 (-$shadow-spread) $shadow-color;
+    background-color: #6495ed;
+    transform: rotate(180deg);
   }
+
+  &:focus {
+    background-color: #6495ed;
+  }
+}
+
+.camera-container__camera {
+  display: flex;
+  margin: {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+  }
+  border: 1px solid white;
+  border-radius: 5px;
+  overflow: hidden;
 }

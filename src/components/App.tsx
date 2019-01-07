@@ -71,7 +71,7 @@ class App extends Component<{}, AppState> {
     return (
       <div className="centered">
         <div className="App__camera-container">
-          <Camera ref={this.cameraRef} className="container" />
+          <Camera ref={this.cameraRef} className="camera-container__camera" />
           <button
             onClick={this.onNewPhoto}
             className="camera-container__button button"

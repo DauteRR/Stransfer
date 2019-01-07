@@ -59,8 +59,6 @@ canvas {
   background-color: #fff;
   transition: all 0.2s;
 }
-button:hover,
-button:focus,
 .download-image-link:hover,
 .download-image-link:focus {
   box-shadow: 0 5px 10px -3px #000;

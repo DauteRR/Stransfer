@@ -30,7 +30,7 @@ class Camera extends Component<CameraProps, CameraState> {
       });
   }
 
-  getVideoElement() {
+  getVideoElement(): HTMLVideoElement {
     const video = this.videoRef.current;
 
     if (!video) throw new Error("Video reference error");
@@ -63,14 +63,14 @@ class Camera extends Component<CameraProps, CameraState> {
   render() {
     if (this.state.errorMessage) {
       return (
-        <div>
+        <div className={this.props.className}>
           <p>{this.state.errorMessage}</p>
         </div>
       );
     }
 
     return (
-      <div style={{ display: "flex" }}>
+      <div className={this.props.className}>
         <video
           ref={this.videoRef}
           autoPlay
