@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import * as MediaUtils from "../utils/mediaUtils";
 
 interface CameraProps {
@@ -11,14 +11,13 @@ interface CameraState {
 }
 
 class Camera extends Component<CameraProps, CameraState> {
-
   videoRef = React.createRef<HTMLVideoElement>();
 
   state = {
     isRecording: false,
     errorMessage: ""
   };
-  
+
   componentDidMount() {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: false })
@@ -34,8 +33,7 @@ class Camera extends Component<CameraProps, CameraState> {
   getVideoElement() {
     const video = this.videoRef.current;
 
-    if (!video)
-      throw new Error("Video reference error");
+    if (!video) throw new Error("Video reference error");
 
     return video;
   }
@@ -49,7 +47,7 @@ class Camera extends Component<CameraProps, CameraState> {
         errorMessage: ""
       });
     }
-  }
+  };
 
   takePhoto = () => {
     if (!this.state.isRecording) {
@@ -57,10 +55,10 @@ class Camera extends Component<CameraProps, CameraState> {
     }
 
     return MediaUtils.mediaToDataUrl(this.getVideoElement(), {
-      width: this.getVideoElement().videoWidth,//this.props.photoWidth,
-      height: this.getVideoElement().videoHeight//this.props.photoHeight
-    });;
-  }
+      width: this.getVideoElement().videoWidth, //this.props.photoWidth,
+      height: this.getVideoElement().videoHeight //this.props.photoHeight
+    });
+  };
 
   render() {
     if (this.state.errorMessage) {
@@ -70,8 +68,9 @@ class Camera extends Component<CameraProps, CameraState> {
         </div>
       );
     }
+
     return (
-      <div >
+      <div style={{ display: "flex" }}>
         <video
           ref={this.videoRef}
           autoPlay

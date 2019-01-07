@@ -1,0 +1,28 @@
+.App__camera-container {
+  position: relative;
+}
+
+.camera-container__button {
+  opacity: 0.5;
+  outline: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 50%;
+  margin-bottom: 12px;
+
+  $shadow-spread: 2px;
+  box-shadow: (-$shadow-spread) 0 white, 0 $shadow-spread white,
+    $shadow-spread 0 white, 0 (-$shadow-spread) white;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    $shadow-spread: 10px;
+    box-shadow: (-$shadow-spread) 0 white, 0 $shadow-spread white,
+      $shadow-spread 0 white, 0 (-$shadow-spread) white;
+    transform: translate(-50%) rotate(180deg);
+  }
+}
