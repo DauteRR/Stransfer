@@ -6,12 +6,13 @@ import * as IdbUtils from '../utils/indexedDatabase';
 import {
   getMaxDimensionsRespectingAspectRatio
 } from '../utils/dimensions';
+import '../index.css';
 
-interface CameraState {
+interface AppState {
   imageData: object[];
 }
 
-class App extends Component<{}, CameraState> {
+class App extends Component<{}, AppState> {
 
   cameraRef = React.createRef<Camera>();
 
@@ -51,21 +52,32 @@ class App extends Component<{}, CameraState> {
     }));
   }
 
+  deleteImage = (key: number) => {
+    this.setState((prevState) => {
+      prevState.imageData.splice( prevState.imageData.findIndex((element: {date?: number}) => {
+        return element.date === key;
+      }), 1);
+      return {
+        imageData: prevState.imageData
+      } 
+    });
+    
+    IdbUtils.deleteImageData(key);
+  }
+
   render() {
     return (
-      <div className="app-container">
+      <div className="centered">
         <Camera
           ref={this.cameraRef}
-          width={1000}
-          height={1000}
-          photoWidth={1000}
-          photoHeight={1000}
+          className="container"
         />
-        <button onClick={this.onNewPhoto} >
+        <button onClick={this.onNewPhoto} className="button">
           Take photo
         </button>
         <DownloadableImageList
           imageData={this.state.imageData}
+          deleteImage={this.deleteImage}
         />
       </div>
     );

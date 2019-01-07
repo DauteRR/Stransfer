@@ -6,6 +6,8 @@ interface DownloadableImageProps {
   dataUrl: string;
   alt: string;
   imageName: string;
+  date: number;
+  deleteImage: Function;
 }
 
 interface DownloadableImageState {
@@ -48,8 +50,9 @@ class DownloadableImage extends Component<
         <a
           download={this.props.imageName}
           href={this.props.dataUrl}
+          className="download-image-link"
         >
-          {`Download ${this.props.imageName}`}
+          {`Download`}
         </a>
       );
     } else {
@@ -82,7 +85,15 @@ class DownloadableImage extends Component<
           onLoad={this.onImageLoad}
           ref={this.imageRef}
         />
-        {this.getDownloadButton()}
+        <div className="result-options">
+          {this.getDownloadButton()}
+          <button 
+            onClick={() => this.props.deleteImage(this.props.date)}
+            className="button"  
+          >
+            Delete
+          </button>
+        </div>
       </React.Fragment>
     );
   }

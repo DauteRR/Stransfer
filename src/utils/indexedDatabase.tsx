@@ -18,6 +18,14 @@ export function saveImageData(data: object) {
   );
 }
 
+export function deleteImageData(key: number) {
+  return idbPromise.then(db =>
+    db.transaction(IMAGE_DATA_OBJECT_STORE_NAME, "readwrite")
+      .objectStore(IMAGE_DATA_OBJECT_STORE_NAME)
+      .delete(key)
+  );
+}
+
 export function getAllImageData() {
   return idbPromise.then(db =>
     db.transaction(IMAGE_DATA_OBJECT_STORE_NAME, "readonly")

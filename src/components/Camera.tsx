@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import * as MediaUtils from "../utils/mediaUtils";
 
 interface CameraProps {
-  width: number;
-  height: number;
-  photoWidth: number;
-  photoHeight: number;
+  className: string;
 }
 
 interface CameraState {
@@ -60,8 +57,8 @@ class Camera extends Component<CameraProps, CameraState> {
     }
 
     return MediaUtils.mediaToDataUrl(this.getVideoElement(), {
-      width: this.props.photoWidth,
-      height: this.props.photoHeight
+      width: this.getVideoElement().videoWidth,//this.props.photoWidth,
+      height: this.getVideoElement().videoHeight//this.props.photoHeight
     });;
   }
 
@@ -74,12 +71,10 @@ class Camera extends Component<CameraProps, CameraState> {
       );
     }
     return (
-      <div>
+      <div >
         <video
           ref={this.videoRef}
           autoPlay
-          width={this.props.width}
-          height={this.props.height}
           role="application"
           aria-label="Camera"
         >

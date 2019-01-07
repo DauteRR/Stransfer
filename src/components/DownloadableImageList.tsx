@@ -6,32 +6,34 @@ interface DownloadableImageListProps {
     dataUrl: string, 
     width: number, 
     height: number,
-    date: string
+    date: number
   }[];
+  deleteImage: Function;
 }
-
 
 class DownloadableImageList extends Component<
   DownloadableImageListProps
 > {
 
-  createPhotoListItem(
+  createPhotoListItem = (
     imageData: {
       dataUrl: string, 
       width: number, 
       height: number,
-      date: string
+      date: number
     },
     index: number
-  ) {
+  ) => {
     return (
-      <li key={index}>
+      <li key={index} className="result-container">
         <DownloadableImage
           dataUrl={imageData.dataUrl}
           width={imageData.width}
           height={imageData.height}
           alt={String(index)}
           imageName={String(index)}
+          date={imageData.date}
+          deleteImage={this.props.deleteImage}
         />
       </li>
     );
@@ -39,7 +41,7 @@ class DownloadableImageList extends Component<
 
   render() {
     return (
-      <ul>
+      <ul className="container result-list">
         {this.props.imageData.map(this.createPhotoListItem)}
       </ul>
     );
