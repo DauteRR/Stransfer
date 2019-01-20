@@ -10,14 +10,13 @@ const canvasBuffer = document.createElement("canvas");
  * @returns {String} The data URL representing the given media
  */
 export function mediaToDataUrl(
-  media: HTMLVideoElement, 
-  { width, height }: {width: number, height: number}
+  media: HTMLVideoElement,
+  { width, height }: { width: number; height: number }
 ) {
   canvasBuffer.width = width;
   canvasBuffer.height = height;
   const context = canvasBuffer.getContext("2d");
-  if (!context)
-    return;
+  if (!context) return;
   context.drawImage(media, 0, 0, width, height);
   return canvasBuffer.toDataURL();
 }
@@ -29,7 +28,7 @@ export function mediaToDataUrl(
  * @param {HTMLMediaElement} media Media where the given stream will be loaded (video or audio)
  */
 export function loadStreamToMedia(
-  stream: MediaStream, 
+  stream: MediaStream,
   media: HTMLMediaElement
 ) {
   // Try to use srcObject. If it doesn't work
@@ -42,13 +41,18 @@ export function loadStreamToMedia(
 }
 
 /**
+ * Stops all the media sources from the given stream
+ */
+export function unloadMediaStream(stream: MediaStream) {
+  [...stream.getTracks()].forEach(track => track.stop());
+}
+
+/**
  * Returns the relationship of the width to the height for the given video
  *
  * @param {HTMLVideoElement} video Video to get the width and height from
  */
-export function getAspectRatio(
-  video: HTMLVideoElement
-) {
+export function getAspectRatio(video: HTMLVideoElement) {
   if (video.videoWidth > 0 && video.videoHeight > 0) {
     return video.videoWidth / video.videoHeight;
   } else {

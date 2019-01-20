@@ -33,9 +33,11 @@ class App extends Component<{}, AppState> {
 
   onNewPhoto = () => {
     const camera = this.getCameraComponent();
-    const cameraAspectRatio = MediaUtils.getAspectRatio(
-      camera.getVideoElement()
-    );
+    const video = camera.getVideoElement();
+    if (!video) {
+      return;
+    }
+    const cameraAspectRatio = MediaUtils.getAspectRatio(video);
     const dimensions = getMaxDimensionsRespectingAspectRatio(cameraAspectRatio);
     const newImageData = {
       date: Date.now(),

@@ -6,14 +6,16 @@ interface CameraProps {
 }
 
 interface CameraState {
+  stream: MediaStream | null;
   isRecording: boolean;
   errorMessage: string;
 }
 
 class Camera extends Component<CameraProps, CameraState> {
-  videoRef = React.createRef<HTMLVideoElement>();
+  private _videoRef = React.createRef<HTMLVideoElement>();
 
   state = {
+    stream: null,
     isRecording: false,
     errorMessage: ""
   };
@@ -21,7 +23,7 @@ class Camera extends Component<CameraProps, CameraState> {
   componentDidMount() {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: false })
-      .then(cameraStream => this.loadStream(cameraStream))
+      .then(this._loadStream)
       .catch(_ => {
         this.setState({
           isRecording: false,
@@ -30,33 +32,46 @@ class Camera extends Component<CameraProps, CameraState> {
       });
   }
 
-  getVideoElement(): HTMLVideoElement {
-    const video = this.videoRef.current;
+  componentWillUnmount() {
+    const { stream } = this.state;
 
-    if (!video) throw new Error("Video reference error");
-
-    return video;
+    if (stream) {
+      MediaUtils.unloadMediaStream(stream);
+    }
   }
 
-  loadStream = (stream: MediaStream) => {
+  private _loadStream = (stream: MediaStream) => {
+    const video = this.getVideoElement();
+
+    if (!video) {
+      return;
+    }
+
     if (!this.state.isRecording) {
-      MediaUtils.loadStreamToMedia(stream, this.getVideoElement());
+      MediaUtils.loadStreamToMedia(stream, video);
 
       this.setState({
+        stream,
         isRecording: true,
         errorMessage: ""
       });
     }
   };
 
+  getVideoElement(): HTMLVideoElement | null {
+    return this._videoRef.current;
+  }
+
   takePhoto = () => {
-    if (!this.state.isRecording) {
+    const video = this.getVideoElement();
+
+    if (!this.state.isRecording || !video) {
       return null;
     }
 
-    return MediaUtils.mediaToDataUrl(this.getVideoElement(), {
-      width: this.getVideoElement().videoWidth, //this.props.photoWidth,
-      height: this.getVideoElement().videoHeight //this.props.photoHeight
+    return MediaUtils.mediaToDataUrl(video, {
+      width: video.videoWidth,
+      height: video.videoHeight
     });
   };
 
@@ -72,7 +87,7 @@ class Camera extends Component<CameraProps, CameraState> {
     return (
       <div className={this.props.className}>
         <video
-          ref={this.videoRef}
+          ref={this._videoRef}
           autoPlay
           role="application"
           aria-label="Camera"
