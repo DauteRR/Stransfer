@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Camera from "./Camera";
-import DownloadableImageList from "./DownloadableImageList";
-import * as MediaUtils from "../utils/mediaUtils";
-import * as IdbUtils from "../utils/indexedDatabase";
-import { getMaxDimensionsRespectingAspectRatio } from "../utils/dimensions";
-import "../index.css";
+import Camera from "../Camera";
+import DownloadableImageList from "../DownloadableImageList";
+import * as MediaUtils from "../../utils/mediaUtils";
+import * as IdbUtils from "../../utils/indexedDatabase";
+import { getMaxDimensionsRespectingAspectRatio } from "../../utils/dimensions";
 import "./App.scss";
 
 interface AppState {

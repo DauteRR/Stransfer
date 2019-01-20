@@ -1,26 +1,23 @@
-import React, {Component} from 'react';
-import DownloadableImage from './DownloadableImage';
+import React, { Component } from "react";
+import DownloadableImage from "./DownloadableImage";
 
 interface DownloadableImageListProps {
   imageData: {
-    dataUrl: string, 
-    width: number, 
-    height: number,
-    date: number
+    dataUrl: string;
+    width: number;
+    height: number;
+    date: number;
   }[];
   deleteImage: Function;
 }
 
-class DownloadableImageList extends Component<
-  DownloadableImageListProps
-> {
-
+class DownloadableImageList extends Component<DownloadableImageListProps> {
   createPhotoListItem = (
     imageData: {
-      dataUrl: string, 
-      width: number, 
-      height: number,
-      date: number
+      dataUrl: string;
+      width: number;
+      height: number;
+      date: number;
     },
     index: number
   ) => {
@@ -37,11 +34,19 @@ class DownloadableImageList extends Component<
         />
       </li>
     );
-  }
+  };
 
   render() {
     return (
-      <ul className="container result-list">
+      <ul
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexWrap: "wrap"
+        }}
+        className="container"
+      >
         {this.props.imageData.map(this.createPhotoListItem)}
       </ul>
     );
