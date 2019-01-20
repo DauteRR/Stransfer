@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import Nav from "../../components/Navigation";
 import "./LandingPage.scss";
 import MakingArtImg from "./img/undraw_making_art_759c.svg";
 import UploadingImg from "./img/undraw_image_upload_wqh3.svg";
@@ -10,39 +11,7 @@ export default () => (
   <Fragment>
     <header className="header">
       <div className="container">
-        <nav className="header__nav">
-          <h1 className="nav__logo">Stransfer</h1>
-          <div className="collapsable-nav-list">
-            <input type="checkbox" id="collapse-nav" hidden />
-            <label
-              aria-hidden="true"
-              className="collapse-nav-list-btn"
-              htmlFor="collapse-nav"
-            >
-              <span /> <span /> <span />
-            </label>
-            <ul className="nav__nav-list">
-              <li className="nav-list__nav-item">
-                <a href="#about-section">About Stransfer</a>
-              </li>
-              <li className="nav-list__nav-item">
-                <Link to="/app">App</Link>
-              </li>
-              <li className="nav-list__nav-item">
-                <a href="#about-us-section">About Us</a>
-              </li>
-              <li className="nav-list__nav-item">
-                <a
-                  href="https://github.com/DauteRR/StyleTransfer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Github
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <Nav />
         <span aria-hidden="true" className="header__down-arrow-container">
           <span className="down-arrow-container__arrow">⌄</span>
         </span>

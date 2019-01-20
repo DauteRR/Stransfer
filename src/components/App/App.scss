@@ -10,22 +10,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: black;
-  color: white;
   margin: 1rem;
   border-radius: 5px;
+  border: 1px solid black;
+  box-shadow: 0 3px 50px -10px grey;
 }
 
 .camera-container__button {
-  outline: none;
   border: 1px solid black;
   border-radius: 50%;
   margin: 12px; // Shadow spread on hover (the maximum value) + 2px
   width: 3rem;
   height: 3rem;
+  background-color: white;
 
   $shadow-spread: 2px;
-  $shadow-color: white;
+  $shadow-color: black;
   box-shadow: (-$shadow-spread) 0 $shadow-color, 0 $shadow-spread $shadow-color,
     $shadow-spread 0 $shadow-color, 0 (-$shadow-spread) $shadow-color;
 
@@ -33,22 +33,17 @@
 
   &:hover {
     $shadow-spread: 10px;
+    $shadow-color: #6c63ff;
     box-shadow: (-$shadow-spread) 0 $shadow-color,
       0 $shadow-spread $shadow-color, $shadow-spread 0 $shadow-color,
       0 (-$shadow-spread) $shadow-color;
-    background-color: #6495ed;
+    border: 1px solid #6c63ff;
     transform: rotate(180deg);
-  }
-
-  &:focus {
-    background-color: #6495ed;
   }
 }
 
 .camera-container__camera {
   display: flex;
-  margin: 1rem 1rem 0 1rem;
-  border: 1px solid white;
-  border-radius: 5px;
-  overflow: hidden;
+  background-color: black;
+  color: white;
 }

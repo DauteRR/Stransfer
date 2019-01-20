@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import App from "./components/App";
-import LandingPage from "./components/LandingPage";
+import HomePage from "./pages/Home";
+import AppPage from "./pages/Application";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const Router = (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route path="/app" component={App} />
+      <Route exact path="/" component={HomePage} />
+      <Route path="/app" component={AppPage} />
       <Route component={() => <div>Error</div>} />
     </Switch>
   </BrowserRouter>

@@ -45,7 +45,6 @@ class DownloadableImageList extends Component<DownloadableImageListProps> {
           alignItems: "center",
           flexWrap: "wrap"
         }}
-        className="container"
       >
         {this.props.imageData.map(this.createPhotoListItem)}
       </ul>

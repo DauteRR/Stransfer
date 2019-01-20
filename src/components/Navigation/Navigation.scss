@@ -1,0 +1,92 @@
+a {
+  text-decoration: underline;
+}
+
+/* Header (hamburger menu "button") */
+.collapse-nav-list-btn {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+.collapse-nav-list-btn span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  background-color: black;
+  margin: 3px;
+  transition: 0.3s;
+}
+#collapse-nav:checked ~ .nav__nav-list {
+  /* When the checkbox is checked -> show the nav list */
+  max-height: 15rem;
+}
+/* Visual effects for when the menu item is toggled */
+#collapse-nav:checked ~ .collapse-nav-list-btn {
+  background-color: #6c63ff;
+}
+#collapse-nav:checked ~ .collapse-nav-list-btn span {
+  background-color: white;
+}
+#collapse-nav:checked ~ .collapse-nav-list-btn span:nth-child(1) {
+  transform: translateY(8px) rotate(-45deg);
+}
+#collapse-nav:checked ~ .collapse-nav-list-btn span:nth-child(2) {
+  opacity: 0;
+}
+#collapse-nav:checked ~ .collapse-nav-list-btn span:nth-child(3) {
+  transform: translateY(-8px) rotate(45deg);
+}
+
+/* Header (nav) */
+.header__nav {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.collapsable-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nav__nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  transition: 0.3s;
+  overflow: hidden;
+  max-height: 0;
+}
+.nav-list__nav-item,
+.nav__logo {
+  margin: 0.7rem;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+.nav-list__nav-item a {
+  display: block;
+  padding: 0.5rem;
+}
+.nav-list__nav-item a:hover {
+  text-decoration: none;
+  box-shadow: -2px 2px 3px, 2px -2px 3px;
+}
+@media (min-width: 650px) {
+  .header__nav {
+    align-items: center;
+  }
+  .nav__nav-list {
+    flex-direction: row;
+    max-height: 15rem;
+  }
+  .collapse-nav-list-btn {
+    display: none;
+  }
+}

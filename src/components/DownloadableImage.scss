@@ -1,33 +1,31 @@
+a {
+  text-decoration: none;
+}
 .DownloadableImage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 1rem;
-  background-color: black;
   border-radius: 5px;
 }
 
 .DownloadableImage__image {
-  margin: 0 1rem 1rem 1rem;
-  border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   overflow: hidden;
+  box-shadow: 0 3px 50px -10px grey;
 }
 
 .DownloadableImage__options {
   box-sizing: border-box;
   width: 100%;
   padding: 0.5rem;
-}
-
-.DownloadableImage__options > a {
-  outline: none;
+  border: 1px solid black;
+  border-radius: 5px 5px 0 0;
 }
 
 .options__delete-button,
 .options__download-icon {
-  outline: none;
   font: inherit;
   border: none;
   border-radius: 50%;
@@ -35,7 +33,7 @@
   height: 2rem;
   padding: 0;
   margin: 0 0.1rem;
-  background-color: #fff;
+  border: 1px solid black;
   transition: all 0.3s;
   display: inline-flex;
   justify-content: center;
@@ -48,13 +46,7 @@
 }
 
 .options__delete-button:hover,
-.options__delete-button:focus {
-  background-color: red;
-  color: white;
-}
-
-.options__download-icon:hover,
-.DownloadableImage__options > a:focus .options__download-icon {
-  background-color: cornflowerblue;
+.options__download-icon:hover {
+  background-color: #6c63ff;
   color: white;
 }
