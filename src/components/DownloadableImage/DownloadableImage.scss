@@ -1,6 +1,13 @@
+img,
+canvas {
+  // Nice aspect ratio
+  max-width: 300px;
+  max-height: 170px;
+}
 a {
   text-decoration: none;
 }
+
 .DownloadableImage {
   display: flex;
   flex-direction: column;
@@ -14,6 +21,8 @@ a {
   border-radius: 0 0 5px 5px;
   overflow: hidden;
   box-shadow: 0 3px 50px -10px grey;
+  border: 1px solid black;
+  border-top: none;
 }
 
 .DownloadableImage__options {
