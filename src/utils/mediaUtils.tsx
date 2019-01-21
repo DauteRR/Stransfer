@@ -3,22 +3,27 @@
 const canvasBuffer = document.createElement("canvas");
 
 /**
- * Return a data url representing the given media with the given parameters
+ * Return a blob representing the image captured from the given media element
  *
- * @param {HTMLVideoElement} media The video to get the data URL from
+ * @param {HTMLVideoElement} media The video to get the snapshot from
  * @param {Object} parameters {width, height} Dimensions of the image
- * @returns {String} The data URL representing the given media
+ * @returns {Blob} The blob representing the snapshot
  */
-export function mediaToDataUrl(
+export function getSnapshot(
   media: HTMLVideoElement,
   { width, height }: { width: number; height: number }
-) {
+): Promise<Blob> {
   canvasBuffer.width = width;
   canvasBuffer.height = height;
   const context = canvasBuffer.getContext("2d");
-  if (!context) return;
+  if (!context) {
+    return Promise.reject();
+  }
   context.drawImage(media, 0, 0, width, height);
-  return canvasBuffer.toDataURL();
+
+  return new Promise((res, rej) =>
+    canvasBuffer.toBlob(blob => (blob ? res(blob) : rej()))
+  );
 }
 
 /**

@@ -1,35 +1,28 @@
 import React, { Component } from "react";
 import DownloadableImage from "./DownloadableImage";
+import { IImageData } from "../utils/IImageData";
 
 interface DownloadableImageListProps {
-  imageData: {
-    dataUrl: string;
-    width: number;
-    height: number;
-    date: number;
-  }[];
+  imageData: IImageData[];
   deleteImage: Function;
 }
 
 class DownloadableImageList extends Component<DownloadableImageListProps> {
   createPhotoListItem = (
-    imageData: {
-      dataUrl: string;
-      width: number;
-      height: number;
-      date: number;
-    },
+    { blob, width, height, date }: IImageData,
     index: number
   ) => {
+    const dataUrl = URL.createObjectURL(blob);
+
     return (
       <li key={index} className="result-container">
         <DownloadableImage
-          dataUrl={imageData.dataUrl}
-          width={imageData.width}
-          height={imageData.height}
+          dataUrl={dataUrl}
+          width={width}
+          height={height}
           alt={String(index)}
           imageName={String(index)}
-          date={imageData.date}
+          date={date}
           deleteImage={this.props.deleteImage}
         />
       </li>

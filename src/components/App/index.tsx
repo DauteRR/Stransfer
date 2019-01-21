@@ -4,10 +4,11 @@ import DownloadableImageList from "../DownloadableImageList";
 import * as MediaUtils from "../../utils/mediaUtils";
 import * as IdbUtils from "../../utils/indexedDatabase";
 import { getMaxDimensionsRespectingAspectRatio } from "../../utils/dimensions";
+import { IImageData } from "../../utils/IImageData";
 import "./App.scss";
 
 interface AppState {
-  imageData: object[];
+  imageData: IImageData[];
 }
 
 class App extends Component<{}, AppState> {
@@ -23,49 +24,39 @@ class App extends Component<{}, AppState> {
     );
   }
 
-  getCameraComponent = () => {
+  onNewPhoto = async () => {
     const camera = this.cameraRef.current;
-
-    if (!camera) throw new Error("Camera reference error");
-
-    return camera;
-  };
-
-  onNewPhoto = () => {
-    const camera = this.getCameraComponent();
+    if (!camera) {
+      return;
+    }
     const video = camera.getVideoElement();
     if (!video) {
+      return;
+    }
+    const photoBlob = await camera.takePhoto();
+    if (!photoBlob) {
       return;
     }
     const cameraAspectRatio = MediaUtils.getAspectRatio(video);
     const dimensions = getMaxDimensionsRespectingAspectRatio(cameraAspectRatio);
     const newImageData = {
       date: Date.now(),
-      dataUrl: camera.takePhoto(),
+      blob: photoBlob,
       width: dimensions.width,
       height: dimensions.height
     };
 
     IdbUtils.saveImageData(newImageData);
-    this.setState(prevState => ({
-      imageData: [...prevState.imageData, newImageData]
+    this.setState(({ imageData }) => ({
+      imageData: [...imageData, newImageData]
     }));
   };
 
   deleteImage = (key: number) => {
-    this.setState(prevState => {
-      prevState.imageData.splice(
-        prevState.imageData.findIndex((element: { date?: number }) => {
-          return element.date === key;
-        }),
-        1
-      );
-      return {
-        imageData: prevState.imageData
-      };
-    });
-
     IdbUtils.deleteImageData(key);
+    this.setState(({ imageData }) => ({
+      imageData: imageData.filter(({ date }) => date !== key)
+    }));
   };
 
   render() {

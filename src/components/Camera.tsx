@@ -66,10 +66,10 @@ class Camera extends Component<CameraProps, CameraState> {
     const video = this.getVideoElement();
 
     if (!this.state.isRecording || !video) {
-      return null;
+      return Promise.reject();
     }
 
-    return MediaUtils.mediaToDataUrl(video, {
+    return MediaUtils.getSnapshot(video, {
       width: video.videoWidth,
       height: video.videoHeight
     });
