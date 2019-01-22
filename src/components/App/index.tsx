@@ -88,6 +88,27 @@ class App extends Component<{}, AppState> {
   render() {
     return (
       <div className="centered">
+        <p className="about-style-selection">
+          Select below the style to apply to the photo to take. But before doing
+          so,{" "}
+          <strong>
+            please read the following caveats that the app has right now:
+          </strong>
+        </p>
+        <ul className="caveats-list">
+          <li>
+            Once you click on a style it will be downloaded. They are about 17MB
+            each 😱 and they are currently not cached 😅
+          </li>
+          <li>
+            For performance reasons the style is not displayed on the camera on
+            real time
+          </li>
+          <li>
+            For performance reasons too the size and quality of the photos is
+            considerably low
+          </li>
+        </ul>
         <ul className="style-list">
           <li>
             <label

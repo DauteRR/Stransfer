@@ -52,3 +52,19 @@
   border: none;
   border-top: 1px solid black;
 }
+
+.about-style-selection {
+  margin: 1rem;
+  text-align: justify;
+  & strong {
+    color: #6c63ff;
+  }
+}
+.caveats-list {
+  list-style-type: circle;
+  text-align: justify;
+  margin: 1rem;
+}
+.caveats-list li {
+  text-align: justify;
+}

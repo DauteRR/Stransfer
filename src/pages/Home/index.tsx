@@ -46,7 +46,7 @@ export default () => (
               alt="Cartoon person painting herself in a canvas with a different style"
             />
           </li>
-          <li className="features__card">
+          {/* <li className="features__card">
             <p className="card__message">
               You can also upload images from your device
             </p>
@@ -55,7 +55,7 @@ export default () => (
               src={UploadingImg}
               alt="Cartoon person uploading physical files to a cardboard imitating the browser"
             />
-          </li>
+          </li> */}
           <li className="features__card">
             <p className="card__message">
               And everything is done in your browser, your photos never leave
