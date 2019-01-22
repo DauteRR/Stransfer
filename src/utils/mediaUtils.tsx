@@ -1,17 +1,16 @@
+import { IDimensions } from "./dimensions";
+
 // Buffer to store the images so we can
 // get their data URL
 const canvasBuffer = document.createElement("canvas");
 
 /**
- * Return a blob representing the image captured from the given media element
- *
- * @param {HTMLVideoElement} media The video to get the snapshot from
- * @param {Object} parameters {width, height} Dimensions of the image
- * @returns {Blob} The blob representing the snapshot
+ * Return a blob representing the given image or the current frame captured from
+ * the given stream
  */
-export function getSnapshot(
-  media: HTMLVideoElement,
-  { width, height }: { width: number; height: number }
+export function mediaToBlob(
+  media: HTMLVideoElement | HTMLImageElement,
+  { width, height }: IDimensions
 ): Promise<Blob> {
   canvasBuffer.width = width;
   canvasBuffer.height = height;
@@ -28,20 +27,21 @@ export function getSnapshot(
 
 /**
  * Assigns a media source to a media element (video or audio)
- *
- * @param {MediaStream} stream Stream to load into the given media element
- * @param {HTMLMediaElement} media Media where the given stream will be loaded (video or audio)
  */
 export function loadStreamToMedia(
   stream: MediaStream,
   media: HTMLMediaElement
-) {
+): Promise<HTMLMediaElement> {
   // Try to use srcObject. If it doesn't work
   // fallback to use URL.createObjectURL()
   try {
     media.srcObject = stream;
   } catch (_) {
     media.src = URL.createObjectURL(stream);
+  } finally {
+    return new Promise(res =>
+      media.addEventListener("loadedmetadata", () => res(media), { once: true })
+    );
   }
 }
 

@@ -1,21 +1,24 @@
-/** 
+export interface IDimensions {
+  width: number;
+  height: number;
+}
+
+/**
  * Video and images maximum dimensions. If we were to allow
  * arbitrary large video or images the app would be much slower.
- * 
+ *
  * Also these needs to be square because ML5js styleTransfer needs
  * square images
  */
-export const MAX_DIMENSIONS = { width: 300, height: 300 };
+export const MAX_DIMENSIONS: IDimensions = { width: 300, height: 300 };
 
 /**
  * Returns whether the given dimensions are in the right bounds or not
- * 
+ *
  * @param {Object} dimensions {width, height} Dimensions to check
  * @returns Whether the given dimensions are in the right bounds or not
  */
-export function areCorrectDimensions(
-  dimensions: {width:number, height:number}
-) {
+export function areCorrectDimensions(dimensions: IDimensions): boolean {
   return (
     dimensions.width > 0 &&
     dimensions.width <= MAX_DIMENSIONS.width &&
@@ -28,9 +31,11 @@ export function areCorrectDimensions(
  * Returns the maximum dimensions respecting the given aspect ratio
  *
  * @param {Number} aspectRatio Width to height relationship that dimensions need to respect
- * @returns {Object} Dimensions respecting the aspect ratio
+ * @returns {IDimensions} Dimensions respecting the aspect ratio
  */
-export function getMaxDimensionsRespectingAspectRatio(aspectRatio: number) {
+export function getMaxDimensionsRespectingAspectRatio(
+  aspectRatio: number
+): IDimensions {
   const result = { ...MAX_DIMENSIONS };
 
   // The dimensions will be the maximum allowed but respecting
