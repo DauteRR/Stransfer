@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const Router = (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/app" component={AppPage} />
