@@ -2,8 +2,8 @@
   "main.css": "/StyleTransfer/static/css/main.84fc0914.chunk.css",
   "main.js": "/StyleTransfer/static/js/main.db2e4c82.chunk.js",
   "main.js.map": "/StyleTransfer/static/js/main.db2e4c82.chunk.js.map",
-  "static/js/1.4037ce29.chunk.js": "/StyleTransfer/static/js/1.4037ce29.chunk.js",
-  "static/js/1.4037ce29.chunk.js.map": "/StyleTransfer/static/js/1.4037ce29.chunk.js.map",
+  "static/js/1.8571602d.chunk.js": "/StyleTransfer/static/js/1.8571602d.chunk.js",
+  "static/js/1.8571602d.chunk.js.map": "/StyleTransfer/static/js/1.8571602d.chunk.js.map",
   "runtime~main.js": "/StyleTransfer/static/js/runtime~main.19975bb9.js",
   "runtime~main.js.map": "/StyleTransfer/static/js/runtime~main.19975bb9.js.map",
   "static/media/undraw_artificial_intelligence_upfn.svg": "/StyleTransfer/static/media/undraw_artificial_intelligence_upfn.2b0a5c21.svg",
@@ -12,6 +12,6 @@
   "static/media/undraw_making_art_759c.svg": "/StyleTransfer/static/media/undraw_making_art_759c.7a6edf59.svg",
   "static/css/main.84fc0914.chunk.css.map": "/StyleTransfer/static/css/main.84fc0914.chunk.css.map",
   "index.html": "/StyleTransfer/index.html",
-  "precache-manifest.4dbf14f8f90e8b67a0101cbab34ff897.js": "/StyleTransfer/precache-manifest.4dbf14f8f90e8b67a0101cbab34ff897.js",
+  "precache-manifest.fd6da285fb5b0d363249454627b5b482.js": "/StyleTransfer/precache-manifest.fd6da285fb5b0d363249454627b5b482.js",
   "service-worker.js": "/StyleTransfer/service-worker.js"
 }
