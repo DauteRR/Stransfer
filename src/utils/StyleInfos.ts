@@ -29,6 +29,11 @@ const styleInfos: IStyleInfo[] = [
     name: "Starry Night",
     pathToModel: "models/starry_night",
     pathToImage: "img/StarryNight_VanGogh_Wikipedia.jpg"
+  },
+  {
+    name: "Mosaic",
+    pathToModel: "models/mosaic",
+    pathToImage: "img/mosaic.jpg"
   }
 ];
 
