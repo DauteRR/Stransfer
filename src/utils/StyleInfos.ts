@@ -8,32 +8,32 @@ const styleInfos: IStyleInfo[] = [
   {
     name: "Scream",
     pathToModel: "models/scream",
-    pathToImage: "img/Munch_TheScream_Wikipedia.jpg"
+    pathToImage: "img/styles/Munch_TheScream_Wikipedia.jpg"
   },
   {
     name: "The Wave",
     pathToModel: "models/wave",
-    pathToImage: "img/Wave_Hokusai_Wikipedia.jpg"
+    pathToImage: "img/styles/Wave_Hokusai_Wikipedia.jpg"
   },
   {
     name: "Rain Princess",
     pathToModel: "models/rain_princess",
-    pathToImage: "img/RainPrincess_LeonidAfremov_Deviantart.jpg"
+    pathToImage: "img/styles/RainPrincess_LeonidAfremov_Deviantart.jpg"
   },
   {
     name: "Matrix",
     pathToModel: "models/matrix",
-    pathToImage: "img/Matrix_Pixabay_Comfreak.jpg"
+    pathToImage: "img/styles/Matrix_Pixabay_Comfreak.jpg"
   },
   {
     name: "Starry Night",
     pathToModel: "models/starry_night",
-    pathToImage: "img/StarryNight_VanGogh_Wikipedia.jpg"
+    pathToImage: "img/styles/StarryNight_VanGogh_Wikipedia.jpg"
   },
   {
     name: "Mosaic",
     pathToModel: "models/mosaic",
-    pathToImage: "img/mosaic.jpg"
+    pathToImage: "img/styles/mosaic.jpg"
   }
 ];
 
