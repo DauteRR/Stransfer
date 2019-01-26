@@ -19,6 +19,16 @@ const styleInfos: IStyleInfo[] = [
     name: "Rain Princess",
     pathToModel: "models/rain_princess",
     pathToImage: "img/RainPrincess_LeonidAfremov_Deviantart.jpg"
+  },
+  {
+    name: "Matrix",
+    pathToModel: "models/matrix",
+    pathToImage: "img/Matrix_Pixabay_Comfreak.jpg"
+  },
+  {
+    name: "Starry Night",
+    pathToModel: "models/starry_night",
+    pathToImage: "img/StarryNight_VanGogh_Wikipedia.jpg"
   }
 ];
 

@@ -14,17 +14,23 @@ import {
   getMaxDimensionsRespectingAspectRatio
 } from "../../utils/dimensions";
 
+interface Style {
+  transfer: (video: HTMLMediaElement) => Promise<HTMLImageElement>;
+}
+
 interface AppState {
   imageData: IImageData[];
   selectedStyle: string;
-  styleTransfer: Promise<any> | null;
+  styleTransfer: Style | null;
+  loadingStyle: boolean;
 }
 
 class App extends Component<{}, AppState> {
   state: AppState = {
     imageData: [],
     styleTransfer: null,
-    selectedStyle: "None"
+    selectedStyle: "None",
+    loadingStyle: false
   };
 
   componentDidMount() {
@@ -55,14 +61,17 @@ class App extends Component<{}, AppState> {
   }
 
   private _onNewPhoto = async (video: HTMLVideoElement) => {
+    if (this.state.loadingStyle) {
+      return;
+    }
+
     const cameraAspectRatio = MediaUtils.getAspectRatio(video);
     const dimensions = getMaxDimensionsRespectingAspectRatio(cameraAspectRatio);
 
     if (!this.state.styleTransfer) {
       this._loadImage(video, dimensions);
     } else {
-      const style = await this.state.styleTransfer;
-      const img = await style.transfer(video);
+      const img = await this.state.styleTransfer.transfer(video);
 
       if (img.complete) {
         this._loadImage(img, dimensions);
@@ -76,18 +85,24 @@ class App extends Component<{}, AppState> {
     }
   };
 
-  private _onStyleSelection(name: string, pathToModel: string) {
-    const styleTransfer = ml5.styleTransfer(pathToModel);
+  private _onStyleSelection = async (name: string, pathToModel: string) => {
+    this.setState({ loadingStyle: true });
+
+    const styleTransfer = await ml5.styleTransfer(pathToModel);
 
     this.setState({
       styleTransfer,
-      selectedStyle: name
+      selectedStyle: name,
+      loadingStyle: false
     });
-  }
+  };
 
   render() {
     return (
       <div className="centered">
+        {this.state.loadingStyle && (
+          <div className="loading-style-info">Downloading Style</div>
+        )}
         <p className="about-style-selection">
           Select below the style to apply to the photo to take. But before doing
           so,{" "}
@@ -122,7 +137,11 @@ class App extends Component<{}, AppState> {
               <button
                 className="style-option__btn"
                 onClick={() =>
-                  this.setState({ styleTransfer: null, selectedStyle: "None" })
+                  this.setState({
+                    styleTransfer: null,
+                    selectedStyle: "None",
+                    loadingStyle: false
+                  })
                 }
               >
                 None
