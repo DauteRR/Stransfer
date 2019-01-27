@@ -34,7 +34,13 @@ const styleInfos: IStyleInfo[] = [
     name: "Mosaic",
     pathToModel: "models/mosaic",
     pathToImage: "img/styles/mosaic.jpg"
+  },
+  {
+    name: "Dance 1987",
+    pathToModel: "models/dance_1987",
+    pathToImage: "img/styles/dance_1987.jpg"
   }
+
 ];
 
 export default styleInfos;
