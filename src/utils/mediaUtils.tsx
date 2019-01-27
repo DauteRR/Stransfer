@@ -53,18 +53,22 @@ export function unloadMediaStream(stream: MediaStream) {
 }
 
 /**
- * Returns the relationship of the width to the height for the given video
+ * Returns the relationship of the width to the height for the given media
  *
- * @param {HTMLVideoElement} video Video to get the width and height from
+ * @param {HTMLVideoElement} media Media to get the width and height from
  */
-export function getAspectRatio(video: HTMLVideoElement) {
-  if (video.videoWidth > 0 && video.videoHeight > 0) {
-    return video.videoWidth / video.videoHeight;
+export function getAspectRatio(media: HTMLVideoElement | HTMLImageElement) {
+  if (media instanceof HTMLVideoElement) {
+    return media.videoWidth / media.videoHeight;
+    // if (media.videoWidth > 0 && media.videoHeight > 0) {
+    // } else {
+    //   throw new Error(
+    //     `Invalid dimensions {videoWidth: ${media.videoWidth}, videoHeight: ${
+    //       media.videoHeight
+    //     }}. They must be numbers greater than 0`
+    //   );
+    // }
   } else {
-    throw new Error(
-      `Invalid dimensions {videoWidth: ${video.videoWidth}, videoHeight: ${
-        video.videoHeight
-      }}. They must be numbers greater than 0`
-    );
+    return media.width / media.height;
   }
 }

@@ -1,6 +1,6 @@
-a {
-  text-decoration: none;
-}
+// a {
+//   text-decoration: none;
+// }
 
 .DownloadableImage {
   display: flex;
@@ -25,6 +25,9 @@ a {
   padding: 0.5rem;
   border: 1px solid black;
   border-radius: 5px 5px 0 0;
+  & > a {
+    text-decoration: none;
+  }
 }
 
 .options__delete-button,

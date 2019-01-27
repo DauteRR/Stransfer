@@ -46,7 +46,7 @@ export default () => (
               alt="Cartoon person painting herself in a canvas with a different style"
             />
           </li>
-          {/* <li className="features__card">
+          <li className="features__card">
             <p className="card__message">
               You can also upload images from your device
             </p>
@@ -55,7 +55,7 @@ export default () => (
               src={UploadingImg}
               alt="Cartoon person uploading physical files to a cardboard imitating the browser"
             />
-          </li> */}
+          </li>
           <li className="features__card">
             <p className="card__message">
               And everything is done in your browser, your photos never leave
@@ -118,6 +118,32 @@ export default () => (
         <Link className="go-to-app-link" to="/app">
           Go to the application
         </Link>
+        <p className="style-selection-caveats">
+          But before using the app{" "}
+          <strong>
+            please read the following caveats that it has right now:
+          </strong>
+        </p>
+        <ul className="caveats-list">
+          <li>
+            Once you click on a style it will be downloaded. They are about 17MB
+            each 😱 but after the first download they are stored in browser for
+            later use (including offline use)
+          </li>
+          <li>
+            The computation needed is considerably high and the app will freeze
+            or lag until the style is applied
+          </li>
+          <li>Doesn't work on Safari nor iOS 😔</li>
+          <li>
+            For performance reasons the style is not displayed on the camera in
+            real time
+          </li>
+          <li>
+            For performance reasons too the size of the photos is considerably
+            low
+          </li>
+        </ul>
       </section>
     </main>
   </Fragment>

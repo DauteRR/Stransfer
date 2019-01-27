@@ -10,7 +10,7 @@
   align-items: center;
   overflow-x: auto;
   max-width: 80%;
-  margin: auto;
+  margin: 1rem auto;
   padding: 1rem;
   border: 1px solid;
   box-shadow: 0 5px 10px -5px black;
@@ -53,22 +53,6 @@
   border-top: 1px solid black;
 }
 
-.about-style-selection {
-  margin: 1rem;
-  text-align: justify;
-  & strong {
-    color: #6c63ff;
-  }
-}
-.caveats-list {
-  list-style-type: circle;
-  text-align: justify;
-  margin: 1rem;
-}
-.caveats-list li {
-  text-align: justify;
-}
-
 /* Loading style info box */
 .loading-style-info {
   position: fixed;
@@ -104,4 +88,22 @@
   75% {
     content: "...";
   }
+}
+
+/* Input section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.input-section__file-input {
+  display: block;
+  margin: 0 0 1rem 0;
+  padding: 1rem;
+  background-color: #6c63ff;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
 }

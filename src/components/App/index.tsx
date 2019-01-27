@@ -3,6 +3,7 @@ import Camera from "../Camera/Camera";
 import DownloadableImageList from "../DownloadableImageList";
 import * as IdbUtils from "../../utils/indexedDatabase";
 import * as MediaUtils from "../../utils/mediaUtils";
+import { MAX_DIMENSIONS } from "../../utils/dimensions";
 import { IImageData } from "../../utils/IImageData";
 import "./App.scss";
 
@@ -13,9 +14,12 @@ import {
   IDimensions,
   getMaxDimensionsRespectingAspectRatio
 } from "../../utils/dimensions";
+import { NEG_ONE } from "long";
 
 interface Style {
-  transfer: (video: HTMLMediaElement) => Promise<HTMLImageElement>;
+  transfer: (
+    video: HTMLMediaElement | HTMLImageElement
+  ) => Promise<HTMLImageElement>;
 }
 
 interface AppState {
@@ -60,19 +64,25 @@ class App extends Component<{}, AppState> {
     }));
   }
 
-  private _onNewPhoto = async (video: HTMLVideoElement) => {
-    if (this.state.loadingStyle) {
-      return;
-    }
-
-    const cameraAspectRatio = MediaUtils.getAspectRatio(video);
+  private _onNewPhoto = async (media: HTMLVideoElement | HTMLImageElement) => {
+    const cameraAspectRatio = MediaUtils.getAspectRatio(media);
     const dimensions = getMaxDimensionsRespectingAspectRatio(cameraAspectRatio);
 
-    if (!this.state.styleTransfer) {
-      this._loadImage(video, dimensions);
-    } else {
-      const img = await this.state.styleTransfer.transfer(video);
+    // Only on images because we know that the video will not change its
+    // dimensions. Images on the other hand are uploaded by the user, they can
+    // have any width & height
+    if (media instanceof HTMLImageElement) {
+      media.width = MAX_DIMENSIONS.width;
+      media.height = MAX_DIMENSIONS.height;
+    }
 
+    // No style transfer means simple photo
+    if (!this.state.styleTransfer) {
+      this._loadImage(media, dimensions);
+    } else {
+      const img = await this.state.styleTransfer.transfer(media);
+
+      // The image source may not be loaded, in that case we wait for the event
       if (img.complete) {
         this._loadImage(img, dimensions);
       } else {
@@ -83,6 +93,23 @@ class App extends Component<{}, AppState> {
         );
       }
     }
+  };
+
+  private _onImageInputted = ({ target }: { target: HTMLInputElement }) => {
+    // Must be one and only one image inputted
+    if (!target.files || target.files.length !== 1) {
+      return;
+    }
+    const imgBlob = target.files[0];
+    const img = new Image();
+    const imgUrl = URL.createObjectURL(imgBlob);
+    img.src = imgUrl;
+    img.onload = async () => {
+      URL.revokeObjectURL(imgUrl);
+      this._onNewPhoto(img);
+    };
+    // Reset the input
+    target.value = "";
   };
 
   private _onStyleSelection = async (name: string, pathToModel: string) => {
@@ -101,29 +128,9 @@ class App extends Component<{}, AppState> {
     return (
       <div className="centered">
         {this.state.loadingStyle && (
-          <div className="loading-style-info">Downloading Style</div>
+          <div className="loading-style-info">Loading Style</div>
         )}
-        <p className="about-style-selection">
-          Select below the style to apply to the photo to take. But before doing
-          so,{" "}
-          <strong>
-            please read the following caveats that the app has right now:
-          </strong>
-        </p>
-        <ul className="caveats-list">
-          <li>
-            Once you click on a style it will be downloaded. They are about 17MB
-            each 😱 and they are currently not cached 😅
-          </li>
-          <li>
-            For performance reasons the style is not displayed on the camera on
-            real time
-          </li>
-          <li>
-            For performance reasons too the size and quality of the photos is
-            considerably low
-          </li>
-        </ul>
+        <h2>Select the style to apply</h2>
         <ul className="style-list">
           <li>
             <label
@@ -165,6 +172,7 @@ class App extends Component<{}, AppState> {
                 <button
                   className="style-option__btn"
                   onClick={() => this._onStyleSelection(name, pathToModel)}
+                  disabled={this.state.loadingStyle}
                 >
                   {name}
                 </button>
@@ -172,11 +180,32 @@ class App extends Component<{}, AppState> {
             </li>
           ))}
         </ul>
-        <Camera onNewPhoto={this._onNewPhoto} />
-        <DownloadableImageList
-          imageData={this.state.imageData}
-          deleteImage={this._deleteImage}
-        />
+        <h2>Take a picture or choose an image from your device</h2>
+        <section className="input-section">
+          <Camera onNewPhoto={this._onNewPhoto} />
+          <label className="input-section__file-input">
+            <input
+              disabled={this.state.loadingStyle}
+              type="file"
+              accept="image/*"
+              multiple={false}
+              onChange={this._onImageInputted}
+              style={{
+                display: "none"
+              }}
+            />
+            Open image from disk
+          </label>
+        </section>
+        <h2>Results</h2>
+        {this.state.imageData.length === 0 ? (
+          <p>No images available</p>
+        ) : (
+          <DownloadableImageList
+            imageData={this.state.imageData}
+            deleteImage={this._deleteImage}
+          />
+        )}
       </div>
     );
   }
