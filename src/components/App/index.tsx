@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Camera from "../Camera/Camera";
+import Camera from "../Camera";
 import DownloadableImageList from "../DownloadableImageList";
 import * as IdbUtils from "../../utils/indexedDatabase";
 import * as MediaUtils from "../../utils/mediaUtils";

@@ -112,7 +112,7 @@ a {
 }
 .info-container__img {
   width: 250px;
-  height: 250px;
+  max-height: 250px;
   border-radius: 50%;
   box-shadow: -2px -2px 10px -3px #6c63ff, 2px 2px 10px -3px #6c63ff,
     -2px 2px 10px -3px #6c63ff, 2px -2px 10px -3px #6c63ff;

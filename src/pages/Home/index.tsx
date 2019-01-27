@@ -6,6 +6,7 @@ import MakingArtImg from "./img/undraw_making_art_759c.svg";
 import UploadingImg from "./img/undraw_image_upload_wqh3.svg";
 import SafeImg from "./img/undraw_safe_bnk7.svg";
 import AiImg from "./img/undraw_artificial_intelligence_upfn.svg";
+import CarlosImg from "./img/carlos.png";
 
 export default () => (
   <Fragment>
@@ -80,22 +81,36 @@ export default () => (
             />
             <p className="info-container__info">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur placeat assumenda quibusdam hic aliquid culpa quae
-              odit exercitationem velit dicta alias accusantium, laborum porro
-              veniam molestiae optio nisi, obcaecati eligendi?
+              Cupiditate, adipisci odit incidunt consequuntur saepe. You can
+              find me{" "}
+              <a
+                className="inline-link"
+                href="https://github.com/DauteRR"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @DauteRR on Github
+              </a>
             </p>
           </li>
           <li className="our-information__info-container">
             <img
               className="info-container__img"
-              src={AiImg}
-              alt="Cartoon robot"
+              src={CarlosImg}
+              alt="Image of co-author with the 'mosaic' style"
             />
             <p className="info-container__info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequatur placeat assumenda quibusdam hic aliquid culpa quae
-              odit exercitationem velit dicta alias accusantium, laborum porro
-              veniam molestiae optio nisi, obcaecati eligendi?
+              I'm Carlos, I love Software Development and understanding the
+              interesting maths behind Artificial Intelligence techniques. You
+              can find me{" "}
+              <a
+                className="inline-link"
+                href="https://github.com/carlosdg"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @carlosdg on Github
+              </a>
             </p>
           </li>
         </ul>
