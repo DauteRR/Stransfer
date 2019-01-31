@@ -70,6 +70,10 @@ a {
   color: white;
   text-shadow: 1px 1px black;
 }
+.header__nav > a {
+  /* Don't underline the H1 link */
+  text-decoration: none;
+}
 .nav-list__nav-item a {
   display: block;
   padding: 0.5rem;
