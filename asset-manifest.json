@@ -1,7 +1,7 @@
 {
   "main.css": "/StyleTransfer/static/css/main.df4bb1b5.chunk.css",
-  "main.js": "/StyleTransfer/static/js/main.a3e1b919.chunk.js",
-  "main.js.map": "/StyleTransfer/static/js/main.a3e1b919.chunk.js.map",
+  "main.js": "/StyleTransfer/static/js/main.a81fafa8.chunk.js",
+  "main.js.map": "/StyleTransfer/static/js/main.a81fafa8.chunk.js.map",
   "static/js/1.0a08469f.chunk.js": "/StyleTransfer/static/js/1.0a08469f.chunk.js",
   "static/js/1.0a08469f.chunk.js.map": "/StyleTransfer/static/js/1.0a08469f.chunk.js.map",
   "runtime~main.js": "/StyleTransfer/static/js/runtime~main.19975bb9.js",
@@ -14,6 +14,6 @@
   "static/media/undraw_image_upload_wqh3.svg": "/StyleTransfer/static/media/undraw_image_upload_wqh3.771e1a7c.svg",
   "static/css/main.df4bb1b5.chunk.css.map": "/StyleTransfer/static/css/main.df4bb1b5.chunk.css.map",
   "index.html": "/StyleTransfer/index.html",
-  "precache-manifest.507389718499bf05cef4d2936faf236e.js": "/StyleTransfer/precache-manifest.507389718499bf05cef4d2936faf236e.js",
+  "precache-manifest.3cc1378e894b4b0d0e0ae62879243e9d.js": "/StyleTransfer/precache-manifest.3cc1378e894b4b0d0e0ae62879243e9d.js",
   "service-worker.js": "/StyleTransfer/service-worker.js"
 }
