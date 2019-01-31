@@ -7,6 +7,7 @@ import UploadingImg from "./img/undraw_image_upload_wqh3.svg";
 import SafeImg from "./img/undraw_safe_bnk7.svg";
 import AiImg from "./img/undraw_artificial_intelligence_upfn.svg";
 import CarlosImg from "./img/carlos.png";
+import DauteImg from "./img/daute.png";
 
 export default () => (
   <Fragment>
@@ -76,13 +77,12 @@ export default () => (
           <li className="our-information__info-container">
             <img
               className="info-container__img"
-              src={AiImg}
-              alt="Cartoon robot"
+              src={DauteImg}
+              alt="Image of co-author with the 'rain princess' style"
             />
             <p className="info-container__info">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Cupiditate, adipisci odit incidunt consequuntur saepe. You can
-              find me{" "}
+              My name is Daute and I enjoy creating useful and interesting
+              applications like this. You can find me{" "}
               <a
                 className="inline-link"
                 href="https://github.com/DauteRR"
