@@ -50,16 +50,10 @@ Besides the web app, we also created two jupyter notebooks related to Style Tran
     <img width="200" height="300" src="docs/images/StarryNightResult.png" />
 </p>
 <p align="left">
-    <img width="300" height="300" src="docs/images/TheWaveContent.jpg" />
-    <img width="300" height="200" src="docs/images/TheWaveStyle.png" />
-    <img width="300" height="300" src="docs/images/TheWaveResult.png" />
+    <img width="250" height="250" src="docs/images/TheWaveContent.jpg" />
+    <img width="250" height="166" src="docs/images/TheWaveStyle.png" />
+    <img width="250" height="250" src="docs/images/TheWaveResult.png" />
 </p>
-
-|
-|
-|
-|
-|
 
 ## Authors
 
