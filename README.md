@@ -1,46 +1,67 @@
-#Style Transfer
+# Stransfer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Stransfer is a progressive web application that lets you take pictures and apply a style to them. It was made by students as part of a college project using the ml5js library :books:.
 
-## Available Scripts
+## Features
+* You can take photos within the app and apply astonishing styles to them
+* You can also upload images from your device
+* Everything is done in your browser, your photos never leave your device
+* You can use the app offline
 
-In the project directory, you can run:
+## Considerations
+* Once you click on a style it will be downloaded. They are about 17MB each 😱 but after the first download they are stored in browser for later use (including offline use)
+* The computation needed is considerably high and the app will freeze or lag until the style is applied
+* Doesn't work on Safari nor iOS 😔
+* For performance reasons the style is not displayed on the camera in real time
+* For performance reasons too the size of the photos is considerably low
 
-### `npm start`
+## Other implementations
+Besides the web app, we also created two jupyter notebooks related to Style Transfer techniques:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [Implementation Gatys et al.](https://github.com/carlosdg/NeuralStyleTransfer)
+* [Training style transfer for ml5](https://github.com/carlosdg/TrainStyleTransfer)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Results
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="left">
+    <img width="198" height="300" src="docs/images/Dance1987Content.jpg" />
+    <img width="320" height="180" src="docs/images/Dance1987Style.jpg" />
+    <img width="198" height="300" src="docs/images/Dance1987Result.png" />
+</p>
+<p align="left">
+    <img width="320" height="208" src="docs/images/MatrixContent.jpg" />
+    <img width="320" height="226" src="docs/images/MatrixStyle.jpg" />
+    <img width="320" height="208" src="docs/images/MatrixResult.jpg" />
+</p>
+<p align="left">
+    <img width="300" height="172" src="docs/images/MosaicContent.jpg" />
+    <img width="250" height="166" src="docs/images/MosaicStyle.jpg" />
+    <img width="300" height="172" src="docs/images/MosaicResult.png" />
+</p>
+<p align="left">
+    <img width="200" height="300" src="docs/images/RainbowPrincessContent.jpg" />
+    <img width="199" height="200" src="docs/images/RainbowPrincessStyle.jpg" />
+    <img width="200" height="300" src="docs/images/RainbowPrincessResult.png" />
+</p>
+<p align="left">
+    <img width="200" height="300" src="docs/images/StarryNightContent.jpg" />
+    <img width="200" height="160" src="docs/images/StarryNightStyle.jpg" />
+    <img width="200" height="300" src="docs/images/StarryNightResult.png" />
+</p>
+<p align="left">
+    <img width="300" height="300" src="docs/images/TheWaveContent.jpg" />
+    <img width="300" height="200" src="docs/images/TheWaveStyle.png" />
+    <img width="300" height="300" src="docs/images/TheWaveResult.png" />
+</p>
 
-### `npm run build`
+|
+|
+|
+|
+|
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Authors
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Carlos Domínguez García ([carlosdg](https://github.com/carlosdg))
+* Daute Rodríguez Rodríguez ([DauteRR](https://github.com/DauteRR))
