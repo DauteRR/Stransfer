@@ -26,7 +26,7 @@ Besides the web app, we also created two jupyter notebooks related to Style Tran
 
 | Content | Style | Result |
 |:-------:|:------|:-------|
-|    <img width="198" height="300" src="docs/images/Dance1987Content.jpg" /> | <img width="198" height="300" src="docs/images/Dance1987Result.png" /> | <img width="320" height="180" src="docs/images/Dance1987Style.jpg" /> |
+|    <img width="198" height="300" src="docs/images/Dance1987Content.jpg" /> | <img width="320" height="180" src="docs/images/Dance1987Style.jpg" /> | <img width="198" height="300" src="docs/images/Dance1987Result.png" /> |
 | <img width="320" height="208" src="docs/images/MatrixContent.jpg" /> | <img width="320" height="226" src="docs/images/MatrixStyle.jpg" /> | <img width="320" height="208" src="docs/images/MatrixResult.jpg" /> |
 | <img width="300" height="172" src="docs/images/MosaicContent.jpg" /> | <img width="250" height="166" src="docs/images/MosaicStyle.jpg" /> | <img width="300" height="172" src="docs/images/MosaicResult.png" /> |
 | <img width="200" height="300" src="docs/images/RainbowPrincessContent.jpg" /> | <img width="199" height="200" src="docs/images/RainbowPrincessStyle.jpg" /> | <img width="200" height="300" src="docs/images/RainbowPrincessResult.png" />|
